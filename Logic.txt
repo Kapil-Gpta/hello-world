@@ -1,0 +1,36 @@
+//Microsoft (R) Visual C# Compiler version 2.9.0.63208 (958f2354)
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+
+namespace Rextester
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            //Your code goes here
+            Console.WriteLine("Hello, world!");
+            List<int> res = FindOccurencesOfString("ABCABDEFABCFAB","AB");
+           
+            foreach(int i in res) 
+            Console.WriteLine(i.ToString());
+        }
+        
+        public static List<int> FindOccurencesOfString(string source , string input)
+        {
+            List<int> patternResults = new List<int>();
+            int sourceLength = source.Length ; 
+            int inputLength  = input.Length;
+            //Look only until string length - length of input. 
+            for(int startPos=0; startPos<=sourceLength-inputLength; startPos++)
+            {
+                if(source.Substring(startPos,inputLength)==input)
+                    patternResults.Add(startPos);
+            }
+            return patternResults;
+        }
+    }
+}
